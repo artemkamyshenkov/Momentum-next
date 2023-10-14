@@ -1,8 +1,10 @@
 'use client';
 
 import type { ChangeEvent } from 'react';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
+import { useDebounce } from '@/common/hooks/useDebounce';
+import { PERSON_NAME } from '@/common/constants';
 import { getGreetingDeclination } from '../helpers/getGreetingDeclination';
 import styles from './Greet.module.scss';
 
@@ -11,13 +13,33 @@ export const Greet = () => {
   const [name, setName] = useState('');
   const currentTime = new Date().getHours();
   const greetMessage = getGreetingDeclination(currentTime);
+  const debouncedValue = useDebounce(name, 1000);
 
-  const handleValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setName(e.target?.value);
+  const setDynamicInputWidth = (value: string) => {
     if (inputRef.current) {
-      inputRef.current.style.width = `${5 + (name?.length || 1)}rem`;
+      inputRef.current.style.width = `${1 + (value?.length || 13)}rem`;
     }
   };
+
+  const handleValueChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target?.value;
+    setName(value);
+    setDynamicInputWidth(value);
+  };
+
+  useEffect(() => {
+    if (debouncedValue) {
+      localStorage.setItem(PERSON_NAME, debouncedValue);
+    }
+  }, [debouncedValue]);
+
+  useEffect(() => {
+    const savedName = localStorage.getItem(PERSON_NAME);
+    if (savedName) {
+      setName(savedName);
+      setDynamicInputWidth(savedName);
+    }
+  }, []);
 
   return (
     <div className={styles.greetContainer}>
