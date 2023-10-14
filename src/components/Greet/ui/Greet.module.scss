@@ -1,0 +1,39 @@
+$font-size: 2rem;
+
+.greetMessage {
+  color: var(--white-color);
+  font-size: $font-size;
+}
+
+.greetContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.input {
+  background: transparent;
+  height: 100%;
+  border: none;
+  outline: none;
+  color: var(--white-color);
+  font-size: $font-size;
+  &:focus {
+    border: none;
+    outline: none;
+  }
+  &::placeholder {
+    color: var(--white-color);
+  }
+  &MaxWidth {
+    max-width: 14rem;
+  }
+}
+
+.inputContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
