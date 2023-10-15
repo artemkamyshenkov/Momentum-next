@@ -1,6 +1,7 @@
 import { Clock } from '@/components/Clock';
 import { Date } from '@/components/Date';
 import { Greet } from '@/components/Greet';
+import { MainGoal } from '@/components/MainGoal';
 import styles from './page.module.scss';
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
         <Clock />
         <Date />
         <Greet />
+        <MainGoal />
       </div>
     </main>
   );

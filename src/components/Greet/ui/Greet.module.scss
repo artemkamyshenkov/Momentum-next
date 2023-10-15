@@ -1,3 +1,5 @@
+@import '@/app/mixin.scss';
+
 $font-size: 2rem;
 
 .greetMessage {
@@ -11,23 +13,11 @@ $font-size: 2rem;
   justify-content: center;
   gap: 0.5rem;
   width: 100%;
+  margin-bottom: 2rem;
 }
 
 .input {
-  background: transparent;
-  height: 100%;
-  border: none;
-  outline: none;
-  color: var(--white-color);
-  font-size: $font-size;
-  &:focus {
-    border: none;
-    outline: none;
-  }
-  &::placeholder {
-    color: var(--white-color);
-    opacity: 0.7;
-  }
+  @include transparentInput($font-size);
   &MaxWidth {
     max-width: 14rem;
   }

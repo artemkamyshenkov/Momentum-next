@@ -1,0 +1,47 @@
+@mixin transparentInput($font-size) {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--white-color);
+  font-size: $font-size;
+  &:focus {
+    border: none;
+    outline: none;
+  }
+  &::placeholder {
+    color: var(--white-color);
+    opacity: 0.7;
+  }
+}
+
+@mixin scrollbars(
+  $size: 10px,
+  $foreground-color: #919191,
+  $background-color: #e3e3e3,
+  $hover-color: #ccc,
+  $radius: 0.5rem
+) {
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $foreground-color;
+    border-radius: $radius;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+  &::-webkit-scrollbar-track {
+    background-color: $background-color;
+    border-radius: $radius;
+  }
+  &::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  scrollbar-color: $foreground-color $background-color;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
