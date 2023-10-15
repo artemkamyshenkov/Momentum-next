@@ -1,0 +1,22 @@
+@import '@/app/mixin.scss';
+
+$font-size: 2rem;
+
+.input {
+  @include transparentInput($font-size);
+  @include scrollbars;
+  width: 50%;
+  font-family: inherit;
+  &::placeholder {
+    text-align: center;
+  }
+  &:focus::placeholder {
+    text-align: left;
+  }
+}
+
+.goalContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
