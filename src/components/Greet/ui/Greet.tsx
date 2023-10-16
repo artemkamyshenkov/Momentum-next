@@ -5,6 +5,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 import { useDebounce } from '@/common/hooks/useDebounce';
 import { PERSON_NAME } from '@/common/constants';
+import { setLocalStorage } from '@/common/helpers/setLocalStorage';
+import { getLocalStorage } from '@/common/helpers/getLocalStorage';
 import { getGreetingDeclination } from '../helpers/getGreetingDeclination';
 import styles from './Greet.module.scss';
 
@@ -30,12 +32,12 @@ export const Greet = () => {
 
   useEffect(() => {
     if (debouncedValue) {
-      localStorage.setItem(PERSON_NAME, debouncedValue);
+      setLocalStorage(PERSON_NAME, debouncedValue);
     }
   }, [debouncedValue]);
 
   useEffect(() => {
-    const savedName = localStorage.getItem(PERSON_NAME);
+    const savedName = getLocalStorage(PERSON_NAME);
     if (savedName) {
       setName(savedName);
       setDynamicInputWidth(savedName);
