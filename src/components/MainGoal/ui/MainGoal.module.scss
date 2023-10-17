@@ -7,11 +7,9 @@ $font-size: 2rem;
   @include scrollbars;
   width: 50%;
   font-family: inherit;
+  text-align: center;
   &::placeholder {
     text-align: center;
-  }
-  &:focus::placeholder {
-    text-align: left;
   }
 }
 
