@@ -4,25 +4,36 @@ import type { ChangeEvent } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { setLocalStorage } from '@/common/helpers/setLocalStorage';
 import { useDebounce } from '@/common/hooks/useDebounce';
-import { PERSON_GOAL } from '@/common/constants';
+import { MESSAGES, PERSON_GOAL } from '@/common/constants';
 import { getLocalStorage } from '@/common/helpers/getLocalStorage';
 import styles from './MainGoal.module.scss';
 
-// TODO: поправить и проверить получаемое значение из ls на пустую строку
 export const MainGoal = () => {
   const [value, setValue] = useState('');
-  const inputRef = useRef<HTMLTextAreaElement | null>(null);
+  const ref = useRef<HTMLTextAreaElement | null>(null);
   const debouncedValue = useDebounce(value, 300);
 
   const handleValueChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    const value = e.target?.value;
-    setValue(value);
+    const newValue = e.target?.value;
+    if (newValue !== value) {
+      setValue(newValue);
+    }
   };
 
   const handleFocus = () => {
     if (!value) {
-      setValue('Моя главная цель на сегодня: ');
+      setValue(MESSAGES.DEFAULT_GOAL_TEXT);
     }
+    const textarea = ref?.current;
+    setTimeout(() => {
+      if (textarea) {
+        textarea.focus();
+        textarea.setSelectionRange(
+          textarea?.value.length,
+          textarea?.value.length,
+        );
+      }
+    }, 0);
   };
 
   const handleBlur = () => {
@@ -35,7 +46,10 @@ export const MainGoal = () => {
     if (debouncedValue) {
       setLocalStorage(PERSON_GOAL, debouncedValue);
     }
-  }, [debouncedValue]);
+    if (!value) {
+      setLocalStorage(PERSON_GOAL, '');
+    }
+  }, [debouncedValue, value]);
 
   useEffect(() => {
     const savedGoal = getLocalStorage(PERSON_GOAL);
@@ -49,7 +63,7 @@ export const MainGoal = () => {
       <textarea
         className={styles.input}
         placeholder="Какая ваша главная цель на сегодня?"
-        ref={inputRef}
+        ref={ref}
         onFocus={handleFocus}
         onBlur={handleBlur}
         value={value}
