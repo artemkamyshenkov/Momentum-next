@@ -1,0 +1,33 @@
+.quoteContainer {
+  color: var(--white-color);
+}
+
+.quoteText {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.quoteAuthor {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.button {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: rgba(255, 255, 255, 0.3);
+  color: var(--white-color);
+  opacity: 0.8;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  &:hover {
+    opacity: 1;
+    background-color: var(--white-color);
+    color: black;
+  }
+}

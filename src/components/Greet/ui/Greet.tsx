@@ -10,7 +10,6 @@ import { getLocalStorage } from '@/common/helpers/getLocalStorage';
 import { getGreetingDeclination } from '../helpers/getGreetingDeclination';
 import styles from './Greet.module.scss';
 
-// TODO: центрирование через css?
 export const Greet = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [name, setName] = useState('');
