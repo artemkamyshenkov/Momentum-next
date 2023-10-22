@@ -37,7 +37,7 @@ export const MainGoal = () => {
   };
 
   const handleBlur = () => {
-    if (!value) {
+    if (!value || value.trim() === MESSAGES.DEFAULT_GOAL_TEXT.trim()) {
       setValue('');
     }
   };
