@@ -1,4 +1,30 @@
+@import '@/app/mixin.scss';
+$font-size: 1rem;
+
 .icon {
   font-size: 2.5rem;
   color: var(--white-color);
+}
+
+.weatherContainer {
+  display: flex;
+  flex-direction: column;
+  color: var(--white-color);
+  font-weight: 300;
+  gap: 0.5rem;
+}
+
+.temp {
+  margin-right: 0.5rem;
+}
+
+.inputWeather {
+  @include transparentInput($font-size);
+  border: 1px solid var(--white-color);
+  border-radius: 6px;
+  padding: 0.3rem;
+  &:focus {
+    border: 1px solid var(--white-color);
+    border-radius: 6px;
+  }
 }
