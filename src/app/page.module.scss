@@ -4,6 +4,7 @@ $container-padding: 1.5rem;
   height: 100%;
   padding: $container-padding;
   margin: 0 auto;
+  position: relative;
 }
 
 .mainContent {
@@ -18,4 +19,5 @@ $container-padding: 1.5rem;
   display: flex;
   justify-content: end;
   margin-bottom: 3rem;
+  min-height: 10rem;
 }
