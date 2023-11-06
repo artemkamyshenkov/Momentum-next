@@ -5,9 +5,11 @@ import { MainGoal } from '@/components/MainGoal';
 import { QuoteDay } from '@/components/QuoteDay';
 import { Weather } from '@/components/Weather';
 import './owfont-regular.css';
+import { Slider } from '@/components/Slider';
 import styles from './page.module.scss';
 
 // TODO: Refactor
+
 export default async function Home() {
   return (
     <main className={styles.container}>
@@ -21,6 +23,7 @@ export default async function Home() {
         <MainGoal />
         <QuoteDay />
       </div>
+      <Slider />
     </main>
   );
 }
