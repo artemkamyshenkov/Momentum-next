@@ -1,3 +1,4 @@
+import type { AxiosError } from 'axios';
 import axios from 'axios';
 import type { WeatherData } from '../types/weather';
 
@@ -11,5 +12,5 @@ export const weatherService = {
         `?q=${city}&lang=ru&appid=${process.env.NEXT_PUBLIC_OPEN_WEATHER_KEY}&units=metric`,
       )
       .then(res => res.data)
-      .catch(e => Promise.reject(new Error(e))),
+      .catch((e: AxiosError) => Promise.reject(e)),
 };

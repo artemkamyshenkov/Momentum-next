@@ -6,9 +6,12 @@ import styles from './Slider.module.scss';
 
 export const Slider = () => {
   const handleClickNext = async () => {
-    const res = await imageService.getRandomImage();
-    document.body.style.background = `url(${res.photo[0].url_l}) center/cover, rgba(0, 0, 0, 0.2)`;
-    console.log(res.photo[0]);
+    try {
+      const res = await imageService.getRandomImage();
+      document.body.style.background = `url(${res.photo[0].url_l}) center/cover, rgba(0, 0, 0, 0.2)`;
+    } catch (error) {
+      console.error(error);
+    }
   };
   const handleClickPrev = () => console.log('prev');
   return (

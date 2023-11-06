@@ -9,11 +9,12 @@ import { DEFAULT_CITY, DEFAULT_CITY_KEY } from '@/common/constants';
 import { useDebounce } from '@/common/hooks/useDebounce';
 import { getLocalStorage } from '@/common/helpers/getLocalStorage';
 import { setLocalStorage } from '@/common/helpers/setLocalStorage';
+import type { AxiosError } from 'axios';
 import styles from './Weather.module.scss';
 
 export const Weather = () => {
   const [currentWeather, setCurrentWeather] = useState<WeatherData>();
-  const [city, setCity] = useState<string | undefined>();
+  const [city, setCity] = useState<string>('');
   const [error, setError] = useState<string | undefined>();
   const debouncedCity = useDebounce(city, 500);
 
@@ -25,13 +26,18 @@ export const Weather = () => {
   useEffect(() => {
     const getWeatherData = async () => {
       try {
-        const weatherData = await weatherService.getWeatherByCity(
-          debouncedCity!,
-        );
-        setCurrentWeather(weatherData);
-        setError(undefined);
+        if (debouncedCity) {
+          const weatherData =
+            await weatherService.getWeatherByCity(debouncedCity);
+          setCurrentWeather(weatherData);
+          setError(undefined);
+        }
       } catch (error) {
-        setError('Город не найден');
+        if ((error as AxiosError).response?.status === 404) {
+          setError('Город не найден');
+        } else {
+          setError('Произошла техническая ошибка');
+        }
       }
     };
     getWeatherData();
