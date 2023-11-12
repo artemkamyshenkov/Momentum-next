@@ -22,7 +22,7 @@ export const Slider = () => {
     try {
       setNextButtonDisabled(true);
       const res = await imageService.getRandomImage();
-      setBgImage(res);
+      await setBgImage(res);
       const currentBgState: CurrentBgState = {
         [CURRENT_BACKGROUND]: res,
       };
@@ -39,7 +39,7 @@ export const Slider = () => {
     } finally {
       nextButtonTimer = setTimeout(() => {
         setNextButtonDisabled(false);
-      }, 5000);
+      }, 3000);
     }
   };
 
@@ -52,12 +52,17 @@ export const Slider = () => {
   }, []);
 
   return (
-    <button
-      type="button"
-      className={styles.slideNext}
-      onClick={handleClickNext}
-      disabled={isNextButtonDisabled}
-      title="Сменить фото"
-    />
+    <>
+      {isNextButtonDisabled && <span className={styles.loader} />}
+      {!isNextButtonDisabled && (
+        <button
+          type="button"
+          className={styles.slideNext}
+          onClick={handleClickNext}
+          disabled={isNextButtonDisabled}
+          title="Сменить фото"
+        />
+      )}
+    </>
   );
 };
