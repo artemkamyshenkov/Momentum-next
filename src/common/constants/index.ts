@@ -8,4 +8,3 @@ export const MESSAGES = {
 };
 export const BACKGROUND = 'bg';
 export const CURRENT_BACKGROUND = 'curentBg';
-export const PREV_BACKGROUND = 'prevBg';
