@@ -6,6 +6,7 @@ import { QuoteDay } from '@/components/QuoteDay';
 import { Weather } from '@/components/Weather';
 import './owfont-regular.css';
 import { Slider } from '@/components/Slider';
+import { ToastContainer } from 'react-toastify';
 import styles from './page.module.scss';
 
 // TODO: Refactor
@@ -24,6 +25,7 @@ export default async function Home() {
         <QuoteDay />
       </div>
       <Slider />
+      <ToastContainer />
     </main>
   );
 }

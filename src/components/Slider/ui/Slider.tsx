@@ -5,15 +5,14 @@ import { imageService } from '@/common/api/imageService';
 import { setLocalStorage } from '@/common/helpers/setLocalStorage';
 import { BACKGROUND, CURRENT_BACKGROUND } from '@/common/constants';
 import { getLocalStorage } from '@/common/helpers/getLocalStorage';
+import { setBgImage } from '@/common/helpers/setBgImage';
+import { toast } from 'react-toastify';
 import styles from './Slider.module.scss';
-/* 
-TODO: 
-1. Индикатор загрузки нового фото чтобы не появлялост дефолное
-2. Сохранить текущее фото и предыдущее. Дебаг логики
-*/
+
 interface CurrentBgState {
   [CURRENT_BACKGROUND]: string;
 }
+
 export const Slider = () => {
   const [isNextButtonDisabled, setNextButtonDisabled] = useState(false);
 
@@ -23,13 +22,20 @@ export const Slider = () => {
     try {
       setNextButtonDisabled(true);
       const res = await imageService.getRandomImage();
-      document.body.style.background = `url(${res}) center/cover, rgba(0, 0, 0, 0.2)`;
+      setBgImage(res);
       const currentBgState: CurrentBgState = {
         [CURRENT_BACKGROUND]: res,
       };
       setLocalStorage(BACKGROUND, currentBgState);
-    } catch (error) {
-      console.error(error);
+    } catch {
+      const notifyError = () =>
+        toast.error(
+          'Произошла ошибка при загрузке фото, пожалуйста перезагрузите страницу',
+          {
+            hideProgressBar: true,
+          },
+        );
+      notifyError();
     } finally {
       nextButtonTimer = setTimeout(() => {
         setNextButtonDisabled(false);
@@ -40,7 +46,7 @@ export const Slider = () => {
   useEffect(() => {
     const savedBg: CurrentBgState = getLocalStorage(BACKGROUND);
     if (savedBg?.[CURRENT_BACKGROUND]) {
-      document.body.style.background = `url(${savedBg?.[CURRENT_BACKGROUND]}) center/cover, rgba(0, 0, 0, 0.2)`;
+      setBgImage(savedBg[CURRENT_BACKGROUND]);
     }
     return () => clearTimeout(nextButtonTimer);
   }, []);
