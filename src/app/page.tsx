@@ -7,6 +7,7 @@ import { Weather } from '@/components/Weather';
 import './owfont-regular.css';
 import { Slider } from '@/components/Slider';
 import { ToastContainer } from 'react-toastify';
+import { TaskList } from '@/components/TaskList';
 import styles from './page.module.scss';
 
 // TODO: Refactor
@@ -26,6 +27,7 @@ export default async function Home() {
       </div>
       <Slider />
       <ToastContainer />
+      <TaskList />
     </main>
   );
 }

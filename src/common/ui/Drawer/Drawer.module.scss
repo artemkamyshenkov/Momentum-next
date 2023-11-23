@@ -1,0 +1,15 @@
+.drawer {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #fff;
+  transition: all 0.3s;
+
+  &.open {
+    opacity: 1;
+    width: 300px;
+  }
+}
