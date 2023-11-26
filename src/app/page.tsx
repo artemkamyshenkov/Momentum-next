@@ -16,6 +16,7 @@ export default async function Home() {
   return (
     <main className={styles.container}>
       <div className={styles.weatherContainer}>
+        <TaskList />
         <Weather />
       </div>
       <div className={styles.mainContent}>
@@ -27,7 +28,6 @@ export default async function Home() {
       </div>
       <Slider />
       <ToastContainer />
-      <TaskList />
     </main>
   );
 }

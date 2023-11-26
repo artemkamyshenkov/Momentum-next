@@ -7,9 +7,29 @@
   left: 0;
   background: #fff;
   transition: all 0.3s;
+  visibility: hidden;
+  z-index: 10;
 
   &.open {
     opacity: 1;
     width: 300px;
+    visibility: visible;
+  }
+}
+
+.content {
+  position: relative;
+  padding: 1rem;
+}
+
+.close {
+  background: transparent;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  &:hover {
+    cursor: pointer;
   }
 }

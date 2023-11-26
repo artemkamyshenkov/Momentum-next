@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import cn from 'classnames';
 import styles from './Drawer.module.scss';
 
 interface DrawerProps {
   children: React.ReactNode;
   open: boolean;
+  onClose?: () => void;
 }
-const cx = cn.bind(styles);
 
-export const Drawer: React.FC<DrawerProps> = ({ children, open }) => {
-  // const [open, setOpen] = useState(false);
-  console.log(open);
-  return (
-    <div className={cn(styles.drawer, { [styles.open]: open })}>{children}</div>
-  );
-};
+export const Drawer: React.FC<DrawerProps> = ({ children, open, onClose }) => (
+  <div className={cn(styles.drawer, { [styles.open]: open })}>
+    <div className={styles.content}>
+      <button onClick={onClose} type="button" className={styles.close}>
+        X
+      </button>
+      {children}
+    </div>
+  </div>
+);
