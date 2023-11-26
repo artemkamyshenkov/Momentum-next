@@ -1,0 +1,12 @@
+.drawerBtn {
+  // position: absolute;
+  // bottom: 2rem;
+  // left: 2rem;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
