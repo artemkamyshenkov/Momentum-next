@@ -19,6 +19,9 @@
   padding: 0.2rem 0.4rem;
   border: none;
   background: inherit;
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
 }
 
 .taskListOpenBtn {
@@ -29,4 +32,22 @@
   &:hover {
     cursor: pointer;
   }
+}
+
+.clearBtn {
+  width: 1rem;
+  height: 1rem;
+  background: inherit;
+  opacity: 0.5;
+  transition: all 0.2s;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+.inputContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
