@@ -14,9 +14,11 @@ export const TaskList = () => {
 
   return (
     <>
-      <Drawer open={drawerOpen} onClose={handleDrawerToggle}>
-        <div>todo</div>
-      </Drawer>
+      <Drawer
+        open={drawerOpen}
+        onClose={handleDrawerToggle}
+        title="Текущие задачи"
+      ></Drawer>
       <button
         type="button"
         className={styles.drawerBtn}
