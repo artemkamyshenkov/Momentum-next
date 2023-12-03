@@ -1,7 +1,30 @@
-.drawerBtn {
-  // position: absolute;
-  // bottom: 2rem;
-  // left: 2rem;
+.addBtn {
+  width: 1.2rem;
+  height: 1.2rem;
+  background: inherit;
+}
+
+.addContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  border: 1px solid #e1dfdd;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.addInput {
+  width: 100%;
+  padding: 0.2rem 0.4rem;
+  border: none;
+  background: inherit;
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+}
+
+.taskListOpenBtn {
   width: 2rem;
   height: 2rem;
   background: transparent;
@@ -9,4 +32,22 @@
   &:hover {
     cursor: pointer;
   }
+}
+
+.clearBtn {
+  width: 1rem;
+  height: 1rem;
+  background: inherit;
+  opacity: 0.5;
+  transition: all 0.2s;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+.inputContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
