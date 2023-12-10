@@ -7,4 +7,5 @@ export const MESSAGES = {
   DEFAULT_GOAL_TEXT: 'Моя главная цель на сегодня: ',
 };
 export const BACKGROUND = 'bg';
-export const CURRENT_BACKGROUND = 'curentBg';
+export const CURRENT_BACKGROUND = 'currentBg';
+export const TASK_LIST = 'taskList';
