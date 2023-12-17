@@ -2,7 +2,7 @@
 
 import { Drawer } from '@/common/ui';
 import type { ChangeEvent, KeyboardEvent } from 'react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TasksIcon from '@/common/icons/tasks.svg';
 import Plus from '@/common/icons/plus.svg';
 import Clear from '@/common/icons/clear.svg';
@@ -17,8 +17,6 @@ export const TaskList = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [taskList, setTaskList] = useState<TaskItemType[]>([]);
-
-  const drawerRef = useRef(null);
 
   const handleDrawerToggle = () => {
     setDrawerOpen(prev => !prev);
@@ -66,7 +64,6 @@ export const TaskList = () => {
         open={drawerOpen}
         onClose={handleDrawerToggle}
         title="Текущие задачи"
-        ref={drawerRef}
       >
         <div className={styles.addContainer}>
           <button type="button" className={styles.addBtn}>
@@ -95,7 +92,7 @@ export const TaskList = () => {
           </div>
         </div>
         {taskList.length > 0 && (
-          <div>
+          <ul>
             {taskList.map((task, idx) => (
               <TaskItem
                 task={task}
@@ -104,7 +101,7 @@ export const TaskList = () => {
                 sequence={idx + 1}
               />
             ))}
-          </div>
+          </ul>
         )}
       </Drawer>
       <button

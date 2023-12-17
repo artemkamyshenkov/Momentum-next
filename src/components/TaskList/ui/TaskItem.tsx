@@ -13,7 +13,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
   onDelete,
   sequence,
 }) => (
-  <div className={styles.task}>
+  <li className={styles.task}>
     <div>
       <span className={styles.sequence}>{sequence ?? ''}.</span>
       <span>{task?.title ?? ''}</span>
@@ -25,5 +25,5 @@ export const TaskItem: React.FC<TaskItemProps> = ({
     >
       <Close />
     </button>
-  </div>
+  </li>
 );
