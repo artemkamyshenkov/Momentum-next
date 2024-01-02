@@ -8,6 +8,7 @@ import './owfont-regular.css';
 import { Slider } from '@/components/Slider';
 import { ToastContainer } from 'react-toastify';
 import { TaskList } from '@/components/TaskList';
+import { Calendar } from '@/components/Calendar';
 import styles from './page.module.scss';
 
 // TODO: Refactor
@@ -16,7 +17,10 @@ export default async function Home() {
   return (
     <main className={styles.container}>
       <div className={styles.weatherContainer}>
-        <TaskList />
+        <div>
+          <TaskList />
+          <Calendar />
+        </div>
         <Weather />
       </div>
       <div className={styles.mainContent}>
