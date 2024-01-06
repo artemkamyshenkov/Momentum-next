@@ -17,7 +17,7 @@ export default async function Home() {
   return (
     <main className={styles.container}>
       <div className={styles.weatherContainer}>
-        <div>
+        <div className={styles.actionButtons}>
           <TaskList />
           <Calendar />
         </div>

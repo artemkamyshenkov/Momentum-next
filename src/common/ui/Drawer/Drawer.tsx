@@ -36,6 +36,10 @@ export const Drawer: React.FC<DrawerProps> = ({
 
   useEffect(() => {
     document.addEventListener('click', handleDocumentClick);
+
+    return () => {
+      document.removeEventListener('click', handleDocumentClick);
+    };
   }, [containerRef, handleDocumentClick]);
 
   return (
