@@ -108,6 +108,7 @@ export const TaskList = () => {
         type="button"
         className={styles.taskListOpenBtn}
         onClick={handleDrawerToggle}
+        title="Tasks"
       >
         <TasksIcon />
       </button>

@@ -17,19 +17,23 @@ export const Calendar = () => {
   const handleCalendarToggle = () => {
     setCalendarOpen(prev => !prev);
   };
+
   return (
     <>
       <button
         type="button"
         onClick={handleCalendarToggle}
         className={styles.openBtn}
+        title="Calendar"
       >
         <CalendarIcon />
       </button>
       {calendarOpen && (
-        <div>
-          <ReactCalendar onChange={onChange} value={value} />
-        </div>
+        <ReactCalendar
+          onChange={onChange}
+          value={value}
+          className={styles.calendar}
+        />
       )}
     </>
   );
