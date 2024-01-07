@@ -10,6 +10,7 @@ interface DrawerProps {
   onClose?: () => void;
   width?: number;
   title?: string;
+  background?: string;
 }
 
 export const Drawer: React.FC<DrawerProps> = ({
@@ -18,6 +19,7 @@ export const Drawer: React.FC<DrawerProps> = ({
   onClose,
   width = 400,
   title = '',
+  background = '#fff',
 }) => {
   const containerRef = useRef(null);
 
@@ -45,7 +47,10 @@ export const Drawer: React.FC<DrawerProps> = ({
   return (
     open && (
       <div className={cx('container')} data-drawer-container ref={containerRef}>
-        <div className={cx('drawer', { open })} style={{ maxWidth: width }}>
+        <div
+          className={cx('drawer', { open })}
+          style={{ maxWidth: width, background }}
+        >
           <div className={cx('content')}>
             <div className={cx('header')}>
               <h3 className={cx('title')}>{title}</h3>

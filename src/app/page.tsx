@@ -9,6 +9,7 @@ import { Slider } from '@/components/Slider';
 import { ToastContainer } from 'react-toastify';
 import { TaskList } from '@/components/TaskList';
 import { Calendar } from '@/components/Calendar';
+import { PomodoroTechnique } from '@/components/Pomodoro';
 import styles from './page.module.scss';
 
 // TODO: Refactor
@@ -20,6 +21,7 @@ export default async function Home() {
         <div className={styles.actionButtons}>
           <TaskList />
           <Calendar />
+          <PomodoroTechnique />
         </div>
         <Weather />
       </div>

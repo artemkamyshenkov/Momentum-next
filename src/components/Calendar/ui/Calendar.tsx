@@ -24,6 +24,7 @@ export const Calendar = () => {
         type="button"
         onClick={handleCalendarToggle}
         className={styles.openBtn}
+        title="Calendar"
       >
         <CalendarIcon />
       </button>
