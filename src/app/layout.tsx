@@ -1,5 +1,6 @@
 import './globals.scss';
 import 'react-toastify/dist/ReactToastify.css';
+import './owfont-regular.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
