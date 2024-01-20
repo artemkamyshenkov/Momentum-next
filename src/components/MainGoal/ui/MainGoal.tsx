@@ -43,13 +43,10 @@ export const MainGoal = () => {
   };
 
   useEffect(() => {
-    if (!value) {
-      setLocalStorage(PERSON_GOAL, '');
-    }
     if (debouncedValue) {
       setLocalStorage(PERSON_GOAL, debouncedValue);
     }
-  }, [debouncedValue, value]);
+  }, [debouncedValue]);
 
   useEffect(() => {
     const savedGoal = getLocalStorage(PERSON_GOAL);

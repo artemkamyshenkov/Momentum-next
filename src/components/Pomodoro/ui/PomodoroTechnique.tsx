@@ -87,6 +87,7 @@ export const PomodoroTechnique = () => {
   const percentage = Math.round((secondsLeft / totalSeconds) * 100);
   const minutes = Math.floor(secondsLeft / 60);
   const seconds = secondsLeft % 60;
+
   return (
     <>
       <button
